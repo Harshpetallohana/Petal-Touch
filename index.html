@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petal Touch - 100% Natural Beauty</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #faf7f5;
+            color: #5a5a5a;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: #d4a373;
+        }
+
+        /* Butterfly Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #faf7f5 0%, #f8f0e9 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .preloader-content {
+            text-align: center;
+            position: relative;
+        }
+
+        .round-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4a373 0%, #c08a5c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 25px rgba(212, 163, 115, 0.3);
+            animation: pulse 2s infinite alternate;
+        }
+
+        .round-logo i {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .loader-text {
+            font-size: 1.8rem;
+            color: #d4a373;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #8a735b;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .butterfly {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #ff9ecb 0%, #ff6b9c 100%);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(45deg);
+            opacity: 0.8;
+            animation: fly 15s linear infinite;
+            z-index: 1;
+        }
+
+        .butterfly:before, .butterfly:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 35px;
+            background: linear-gradient(135deg, #ff9ecb 0%, #ff6b9c 100%);
+            border-radius: 50%;
+        }
+
+        .butterfly:before {
+            top: -15px;
+            left: -5px;
+            transform: rotate(-15deg);
+        }
+
+        .butterfly:after {
+            top: -15px;
+            right: -5px;
+            transform: rotate(15deg);
+        }
+
+        .butterfly-1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+
+        .butterfly-2 {
+            top: 70%;
+            left: 80%;
+            animation-delay: 2s;
+            animation-duration: 20s;
+        }
+
+        .butterfly-3 {
+            top: 40%;
+            left: 5%;
+            animation-delay: 4s;
+            animation-duration: 30s;
+        }
+
+        .butterfly-4 {
+            top: 10%;
+            left: 70%;
+            animation-delay: 1s;
+            animation-duration: 18s;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0) rotate(45deg);
+            }
+            25% {
+                transform: translate(200px, 150px) rotate(90deg);
+            }
+            50% {
+                transform: translate(400px, 0) rotate(135deg);
+            }
+            75% {
+                transform: translate(200px, -150px) rotate(180deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(225deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 10px 25px rgba(212, 163, 115, 0.3);
+            }
+            100% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 30px rgba(212, 163, 115, 0.4);
+            }
+        }
+
+        /* Header Styles */
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .round-logo-small {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4a373 0%, #c08a5c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .round-logo-small i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d4a373;
+            letter-spacing: 2px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: #d4a373;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #5a5a5a;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            color: #d4a373;
+        }
+
+        .contact-number {
+            display: flex;
+            align-items: center;
+            color: #d4a373;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .contact-number i {
+            margin-right: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('petal.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #d4a373;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            color: #5a5a5a;
+        }
+
+        .cta-button {
+            background-color: #d4a373;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #c08a5c;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #d4a373;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #d4a373;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 250px;
+            background-color: #f8f0e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            color: #d4a373;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .product-info p {
+            color: #5a5a5a;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #d4a373;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 5%;
+            background-color: #f8f0e9;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: #d4a373;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #5a5a5a;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            background: url('myphoto.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .contact-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: #d4a373;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            color: #d4a373;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-card p {
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: #d4a373;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #faf7f5;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: #d4a373;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #d4a373;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                padding: 15px;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+                flex: 1;
+            }
+
+            .menu-toggle {
+                display: flex;
+                order: 3;
+            }
+
+            nav {
+                width: 100%;
+                order: 4;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .contact-number {
+                order: 2;
+                margin-left: auto;
+                margin-right: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+
+            .about-content, .about-image {
+                flex: 100%;
+            }
+
+            .about-image {
+                margin-top: 30px;
+                height: 250px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-card {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .contact-number {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Touch-friendly elements for mobile */
+        .cta-button, .product-card, .contact-card {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Prevent horizontal scrolling */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Butterfly Preloader -->
+    <div id="preloader">
+        <div class="butterfly butterfly-1"></div>
+        <div class="butterfly butterfly-2"></div>
+        <div class="butterfly butterfly-3"></div>
+        <div class="butterfly butterfly-4"></div>
+        
+        
+        <div class="preloader-content">
+            <div class="round-logo">
+                <img src="rounded_logo.png">
+            </div>
+            <div class="loader-text">Petal Touch</div>
+            <div class="tagline">Made with 100% natural extracts</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="round-logo-small">
+                <i class="fas fa-spa"></i>
+            </div>
+            <div class="logo-text">PETAL TOUCH</div>
+        </div>
+        
+        <div class="contact-number">
+            <i class="fas fa-phone"></i>
+            +92 332 1367681
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <nav id="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Pure Natural Beauty</h1>
+        <p>Petal Toch products are organically source extracts that made with love for you. Our products make your skin healthy and glowy with no chemicals.</p>
+        <button class="cta-button">Explore Our Products</button>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="lipbalm.png" alt="Moisturizing Lip Balm">
+                </div>
+                <div class="product-info">
+                    <h3>Moisturizing Lip Balm</h3>
+                    <p>Unveil the secret to irresistibly soft lips with our natural lip care formula</p>
+                    <span class="product-price"></span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="multani.png" alt="Multani Mud Mask">
+                </div>
+                <div class="product-info">
+                    <h3>Multani Mud Mask</h3>
+                    <p>Absorbs oil, cleans pores, prevents acne & pimples, and brightens skin</p>
+                    <span class="product-price"></span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="prodcuts.png" alt="Gift Hamper">
+                </div>
+                <div class="product-info">
+                    <h3>Gift Hamper</h3>
+                    <p>Special curated collection of our best products for gifts</p>
+                    <span class="product-price"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <h2>Our Story</h2>
+            <p>Petal Touch was born from a simple idea: nature provides the best ingredients for healthy, radiant skin. We combine time-honored botanical wisdom with modern skincare science.</p>
+            <p>Every product is crafted with care, using only 100% natural extracts sourced from Nature with our eco-friendly packaging.</p>
+            <p>Experience the difference that purity makes. Your skin will thank you.</p>
+        </div>
+        <div class="about-image"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p>+92 332 1367681</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>petaltouch1112@gmail.com</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visit Us</h3>
+                <p>Mirpurkhas , Railway Station</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Petal Touch</h3>
+                <p>100% natural skincare products made with love and care for your skin and the environment.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61554777772559"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/peta.ltouch?utm_source=ig_web_button_share_sheet&igsh=MWs0NWF4YXlkdTh1aQ=="><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Petal Touch. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader functionality
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(function() {
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 3000); // 3 seconds preloader display
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const nav = document.getElementById('nav');
+        
+        mobileMenu.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
